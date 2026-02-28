@@ -1,0 +1,16 @@
+# AWS Announcements Scraper - Core Dependencies
+# Install with: pip install -r requirements.txt
+
+# HTTP requests
+requests>=2.31.0
+
+# HTML parsing
+beautifulsoup4>=4.12.2
+
+# Configuration file support
+PyYAML>=6.0.1
+
+# Optional: Testing dependencies
+# Uncomment if you want to run tests
+# pytest>=7.4.3
+# hypothesis>=6.92.1

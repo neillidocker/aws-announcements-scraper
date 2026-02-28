@@ -1,0 +1,108 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+test_env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+tests/
+
+# Distribution
+aws-scraper-distribution/
+aws-scraper-v*.zip
+*.whl
+*.tar.gz
+
+# Environment
+.env
+.env.local
+
+# Output directories
+results/
+output/
+test_output/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config with sensitive data
+config/users.json
+config/__init__.py
+
+# Files not needed for GitHub
+LICENSE
+.env.example
+MANIFEST.in
+
+# Internal documentation (don't push)
+DOCUMENTATION_SUMMARY.md
+COMMAND_REFERENCE.md
+LANGUAGE_SUPPORT.md
+LANGUAGE_FEATURE_SUMMARY.md
+GITHUB_*.md
+DISTRIBUTION_*.md
+QUICK_START_*.md
+build_distribution.py
+setup_github.py
+AWS_SCRAPER_README.md
+CONTRIBUTING.md
+
+# Other projects in this folder (don't push)
+app.py
+app.zip
+analyze_page_structure.py
+check_announcements.py
+auth/
+s3_operations/
+file_operations/
+static/
+templates/
+AIO-Toolkit-SRC/
+README_S3_MANAGER.md
+
+# Specs folder
+.kiro/

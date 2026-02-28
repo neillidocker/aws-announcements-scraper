@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aws-announcements-scraper"
+version = "1.0.0"
+description = "A web scraper for AWS China announcements with date filtering and multiple output formats"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["aws", "scraper", "web-scraping", "announcements", "china"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.2",
+    "PyYAML>=6.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "hypothesis>=6.92.1",
+]
+
+[project.scripts]
+aws-scraper = "aws_scraper.main:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/aws-announcements-scraper"
+Documentation = "https://github.com/yourusername/aws-announcements-scraper#readme"
+Repository = "https://github.com/yourusername/aws-announcements-scraper"
+Issues = "https://github.com/yourusername/aws-announcements-scraper/issues"
+
+[tool.setuptools]
+packages = ["aws_scraper"]
+
+[tool.setuptools.package-data]
+aws_scraper = ["*.md"]

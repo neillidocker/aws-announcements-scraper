@@ -23,7 +23,7 @@ A Python web scraping application that extracts content from AWS China's "Most R
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/aws-announcements-scraper.git
+git clone https://github.com/neillidocker/aws-announcements-scraper.git
 cd aws-announcements-scraper
 
 # Install the package
@@ -360,14 +360,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🐛 Bug Reports & Feature Requests
 
-- **Bug Reports**: [Open an issue](https://github.com/yourusername/aws-announcements-scraper/issues)
-- **Feature Requests**: [Open an issue](https://github.com/yourusername/aws-announcements-scraper/issues)
+- **Bug Reports**: [Open an issue](https://github.com/neillidocker/aws-announcements-scraper/issues)
+- **Feature Requests**: [Open an issue](https://github.com/neillidocker/aws-announcements-scraper/issues)
 
 ## 📧 Contact
 
-Your Name - your.email@example.com
+Your Name - ninamz@nwcdcloud.cn
 
-Project Link: [https://github.com/yourusername/aws-announcements-scraper](https://github.com/yourusername/aws-announcements-scraper)
+Project Link: [https://github.com/neillidocker/aws-announcements-scraper](https://github.com/neillidocker/aws-announcements-scraper)
 
 ## 🙏 Acknowledgments
 
@@ -401,20 +401,6 @@ aws-scraper --timeout 60 --date-filter 2026-01
 # Solution: Increase delay between requests
 aws-scraper --delay 2 --date-filter 2026-01
 ```
-
-## 📈 Roadmap
-
-- [ ] Add support for multiple AWS regions
-- [ ] Implement parallel processing for faster scraping
-- [ ] Add database storage option
-- [ ] Create web UI for easier usage
-- [ ] Add email notifications for new announcements
-- [ ] Support for custom date ranges (not just YYYY-MM)
-
-## ⭐ Star History
-
-If you find this project useful, please consider giving it a star! ⭐
-
 ---
 
 Made with ❤️ by [Your Name]

@@ -102,7 +102,13 @@ file_operations/
 static/
 templates/
 AIO-Toolkit-SRC/
+README_s3.md
 README_S3_MANAGER.md
+bak/
+
+# Guide files (not needed on GitHub)
+GITHUB_DESKTOP_GUIDE.md
+GIT_COMMAND_LINE_GUIDE.md
 
 # Specs folder
 .kiro/

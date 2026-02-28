@@ -365,7 +365,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Your Name - ninamz@nwcdcloud.cn
+ninamz@nwcdcloud.cn
 
 Project Link: [https://github.com/neillidocker/aws-announcements-scraper](https://github.com/neillidocker/aws-announcements-scraper)
 
@@ -403,4 +403,4 @@ aws-scraper --delay 2 --date-filter 2026-01
 ```
 ---
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by Neil Li

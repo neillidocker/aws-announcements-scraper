@@ -77,6 +77,14 @@ config/__init__.py
 LICENSE
 .env.example
 MANIFEST.in
+inspect_ppt.py
+architecture_diagram.png
+
+# PPT generator (next release)
+aws_scraper/generate_ppt.py
+template_en.pptx
+template_cn.pptx
+template.pptx
 
 # Internal documentation (don't push)
 DOCUMENTATION_SUMMARY.md

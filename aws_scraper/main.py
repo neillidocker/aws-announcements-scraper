@@ -318,9 +318,9 @@ def main() -> int:
             config_overrides['output.format'] = args.output_format
         if args.output_dir:
             config_overrides['output.directory'] = args.output_dir
-        if args.timeout:
+        if args.timeout is not None:
             config_overrides['http.timeout'] = args.timeout
-        if args.max_retries:
+        if args.max_retries is not None:
             config_overrides['http.max_retries'] = args.max_retries
         if args.rate_limit_delay is not None:
             if args.rate_limit_delay < 0:

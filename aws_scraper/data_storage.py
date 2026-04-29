@@ -54,9 +54,11 @@ class DataStorage:
         # Create output data structure
         output_data = self._prepare_output_data(filtered_data, scraping_result)
         
-        # Generate filename with timestamp
+        # Generate filename with timestamp and language
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = self.filename_template.format(timestamp=timestamp)
+        language = self.config.get('scraping', {}).get('language', 'en')
+        lang_suffix = f"_{language}"
+        filename = self.filename_template.format(timestamp=timestamp) + lang_suffix
         
         # Store in the specified format
         if self.output_format == 'json':
@@ -195,6 +197,12 @@ class DataStorage:
         """Store data in CSV format."""
         output_path = self.output_directory / f"{filename}.csv"
         
+        def sanitize_csv_value(value):
+            """Prevent CSV formula injection by prefixing dangerous characters."""
+            if isinstance(value, str) and value and value[0] in ('=', '+', '-', '@', '\t', '\r'):
+                return "'" + value
+            return value
+        
         with open(output_path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             
@@ -207,10 +215,10 @@ class DataStorage:
             # Write announcement data
             for announcement in announcements:
                 row = [
-                    announcement.title,
+                    sanitize_csv_value(announcement.title),
                     announcement.url,
                     announcement.publication_date.isoformat(),
-                    announcement.content_text,
+                    sanitize_csv_value(announcement.content_text),
                     len(announcement.embedded_links),
                     announcement.extraction_timestamp.isoformat()
                 ]

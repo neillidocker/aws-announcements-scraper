@@ -36,6 +36,7 @@ setup(
         "requests>=2.31.0",
         "beautifulsoup4>=4.12.2",
         "PyYAML>=6.0.1",
+        "python-pptx>=1.0.0",
     ],
     extras_require={
         "dev": [
@@ -46,6 +47,7 @@ setup(
     entry_points={
         "console_scripts": [
             "aws-scraper=aws_scraper.main:main",
+            "aws-generate-ppt=aws_scraper.generate_ppt:main",
         ],
     },
     include_package_data=True,

@@ -105,7 +105,7 @@ class ScraperOrchestrator:
             # Step 4: Store results
             logger.info("Step 4: Storing results")
             result = self._create_result(filtered_extractions, failed_extractions, 
-                                       self.total_links_found, time.time() - start_time)
+                                       len(filtered_links), time.time() - start_time)
             
             # Store the data
             output_path = self.data_storage.store_data(result)

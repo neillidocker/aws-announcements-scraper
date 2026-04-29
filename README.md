@@ -16,6 +16,7 @@ A Python web scraping application that extracts content from AWS China's "Most R
 - 📝 **Comprehensive Logging**: Detailed logs for debugging and monitoring
 - ⚙️ **Highly Configurable**: Customize timeouts, retries, rate limiting, and more
 - 🎨 **Professional HTML Reports**: Interactive search, AWS-themed styling, responsive design
+- 📑 **PowerPoint Report Generation**: Auto-generate PPT reports from JSON output with bilingual templates
 
 ## 🚀 Quick Start
 
@@ -52,6 +53,32 @@ aws-scraper --config config/aws_scraper_config.json --date-filter 2026-02
 aws-scraper --date-filter 2026-01 --output-format csv --log-level DEBUG
 ```
 
+### Generate PowerPoint Report
+
+After scraping announcements to JSON, generate a PPT report:
+
+```bash
+# Step 1: Scrape to JSON
+aws-scraper --language en --date-filter 2026-04 --output-format json --output-dir ./results
+aws-scraper --language zh --date-filter 2026-04 --output-format json --output-dir ./results
+
+# Step 2: Generate PPT (auto-detects language, auto-selects template)
+aws-generate-ppt results/aws_announcements_20260422_xxxxxx_en.json
+aws-generate-ppt results/aws_announcements_20260422_xxxxxx_zh.json
+
+# Custom output filename
+aws-generate-ppt results/aws_announcements_20260422_xxxxxx_en.json --output my_report.pptx
+
+# Force a specific template
+aws-generate-ppt results/aws_announcements_20260422_xxxxxx_en.json --template template_en.pptx
+```
+
+The PPT generator:
+- Auto-detects language (English/Chinese) from JSON content
+- Auto-selects the matching template (`template_en.pptx` or `template_cn.pptx`)
+- Classifies announcements into service categories (Analytics, Storage, Compute, etc.)
+- Generates category slides with highlighting and feature detail slides
+
 ### Advanced Usage Examples
 
 ```bash
@@ -85,11 +112,6 @@ aws-scraper \
 
 # Using configuration file
 aws-scraper --config config/aws_scraper_config.json
-
-# Multiple output formats for same data
-aws-scraper --date-filter 2026-01 --output-format json --output-dir ./results
-aws-scraper --date-filter 2026-01 --output-format html --output-dir ./results
-aws-scraper --date-filter 2026-01 --output-format csv --output-dir ./results
 
 # Bilingual reports
 aws-scraper --language en --date-filter 2026-01 --output-dir ./reports/english
@@ -293,46 +315,25 @@ The system follows a layered architecture pattern:
 
 ## 🧪 Development
 
-### Running Tests
-
-```bash
-# Install development dependencies
-pip install -e ".[dev]"
-
-# Run tests
-pytest tests/ -v
-
-# Run with coverage
-pytest tests/ --cov=aws_scraper --cov-report=html
-```
-
 ### Project Structure
 
 ```
-aws_scraper/
-├── __init__.py              # Package initialization
-├── models.py                # Data models
-├── config_manager.py        # Configuration management
-├── http_client.py           # HTTP client with retry logic
-├── homepage_parser.py       # Homepage parsing
-├── content_extractor.py     # Content extraction
-├── date_filter.py           # Date filtering
-├── data_storage.py          # Output formatting
-├── scraper_orchestrator.py  # Main workflow
-└── main.py                  # CLI interface
-```
-
-### Building Distribution Package
-
-```bash
-# Install build tools
-pip install build
-
-# Build the package
-python -m build
-
-# Or use the automated script
-python build_distribution.py
+├── aws_scraper/             # Source code
+│   ├── __init__.py          # Package initialization
+│   ├── main.py              # CLI interface (aws-scraper command)
+│   ├── generate_ppt.py      # PPT report generator (aws-generate-ppt command)
+│   ├── models.py            # Data models
+│   ├── config_manager.py    # Configuration management
+│   ├── http_client.py       # HTTP client with retry logic
+│   ├── homepage_parser.py   # Homepage parsing
+│   ├── content_extractor.py # Content extraction
+│   ├── date_filter.py       # Date filtering
+│   ├── data_storage.py      # Output formatting
+│   ├── scraper_orchestrator.py  # Main workflow
+│   └── logging_config.py    # Logging setup
+├── config/                  # Example configuration files
+├── template_en.pptx         # English PPT template
+└── template_cn.pptx         # Chinese PPT template
 ```
 
 ## 📋 Requirements
@@ -343,6 +344,7 @@ python build_distribution.py
   - requests >= 2.31.0
   - beautifulsoup4 >= 4.12.2
   - PyYAML >= 6.0.1
+  - python-pptx >= 1.0.0 (for PPT report generation)
 
 ## 🤝 Contributing
 
@@ -392,14 +394,12 @@ python -m aws_scraper.main --date-filter 2026-01
 
 ### Network timeouts
 ```bash
-# Solution: Increase timeout value
 aws-scraper --timeout 60 --date-filter 2026-01
 ```
 
 ### Rate limiting errors
 ```bash
-# Solution: Increase delay between requests
-aws-scraper --delay 2 --date-filter 2026-01
+aws-scraper --rate-limit-delay 2 --date-filter 2026-01
 ```
 ---
 
